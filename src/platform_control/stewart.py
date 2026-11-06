@@ -20,8 +20,11 @@ class StewartPlatform():
         self.reset()
 
     """
-        given a string to send to the arduino, send it. does this work for multi-character strings?
-        this function should also be a halting operation which waits until the arduino sends back "OK".
+        given a string to send to the arduino, send it. the currently running arduino code
+        sends "OK" whenever it receives a command, and this function waits for the confirmation
+        before returning. however, the arduino code only sends it when it receives a command, not
+        when the command has been fully executed. so only use this function for fast operations
+        like turning on the laser or asking for the status.
     """
     def send_command(self, command):
         # Send one character supported by handleCommand().
@@ -47,7 +50,13 @@ class StewartPlatform():
             )
         return response
 
-    def send_motion_command(self, command, poll_interval=0.05):
+    """
+        This function is identical to the previous function but waits until the command has
+        finished executing on the stewart platform before continuing. 
+        This function sends the command, then every 'poll_interval' seconds asks for the current
+        status and only returns once the current status reads that the platform has finished moving.
+    """
+    def send_motion_command(self, command, poll_interval=0.01):
         """
         Send a motion command and wait until the platform finishes moving.
         """
@@ -97,7 +106,6 @@ class StewartPlatform():
         self.reset()
         if self.serial.is_open:
             self.serial.close()
-
 
     def __enter__(self):
         return self

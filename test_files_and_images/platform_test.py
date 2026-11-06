@@ -8,7 +8,7 @@ import numpy as np
 #     print(port.device, "-", port.description)
 
 # initialize platform
-port = "/dev/cu.usbmodemE8F60ABF50482"
+port = ""
 platform =  StewartPlatform(port)
 platform.send_command("L") # turns on the laser
 platform.send_command("MAXA 1") # sets the rotation scale to 1 deg
