@@ -2,7 +2,7 @@ import pygame
 import numpy as np
 from stable_baselines3 import PPO
 
-from src.telescope.pSCT_P12 import PSCT_P12
+from src.platform_control.stewart_telescope_one_panel import StewartTelescope1
 from src.telescope.image_analyzer import ImageAnalyzer
 from src.environments.no_image_psctp12_env import NoImagePSCTP12Env
 from src.environments.fine_alignment.naive_image_env import NaiveImageEnv
@@ -50,7 +50,7 @@ centroid_detection_color2 = (17, 74, 77)
 #     "bg_level": 6,
 #     "read_noise": 11
 # })
-tele = "configs/telescopes/fine_alignment/10_panel_img_noise/3.yaml"
+tele = "configs/telescopes/hardware/stewart1.yaml"
 #tele = "configs/telescopes/example.yaml"
 env = NaiveImageEnv({
     "max_steps": 512,

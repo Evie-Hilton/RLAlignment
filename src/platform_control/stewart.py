@@ -4,6 +4,9 @@ import time
 """
     A wrapper class which allows python to talk to the arduino board. 
     The class currently assumes a usb connection exists between this computer and the board.
+
+    This class now exists solely on the PI, since the platform is now plugged into the pi directly.
+    This code is for reference only.
 """
 class StewartPlatform():
     def __init__(self, port, baudrate=115200):

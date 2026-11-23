@@ -1,0 +1,10 @@
+# image characteristics
+n_panels: 1
+img_size: 128
+center_pix: [465, 568]
+
+PIURL: http://100.116.141.81:8000
+
+rotation_scale: 1
+
+init_scatter: 5
